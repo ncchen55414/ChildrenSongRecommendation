@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Children's Songs Recommendation</title>
+
+    <style>
+
+        h1 {text-align: center;}
+        h2 {text-align: center;}
+
+                p {text-align: center;}
+                div {text-align: center;}
+        
+                .demo {
+                  width: 600px;
+                }
+                .demo1 {
+                  width: 200px;
+                }
+                table, th, td {
+          border:1px solid black;
+        }
+        table.center {
+          margin-left: auto; 
+          margin-right: auto;
+        }
+                </style>
+
+</head>
+<body>
+
+
+
+    <h1> You have selected the song: {{song[0]}}.</h1>
+    <div>
+   
+    <img src={{song[3]}} alt="alternatetext" style="width:100px;height:100px">
+    {% if song[[2]] != None %}
+    <audio controls>
+        <source src= {{song[2]}} type="audio/mpeg">
+      </audio>
+    {% endif %}
+    </div>
+
+
+
+
+
+
+    <h1> Songs Recommended for You: </h1>
+
+    
+    {% if filter %}
+    <h2> fiter is on with age <= {{filter}}</h2>
+    {% endif %}
+
+    <div>
+
+    <table class="center">
+        <tr>
+            <th></th>
+            <th>Song Name</th>
+            <th>Age </th>
+            <th>Song Preview</th>
+        </tr>
+
+    {% for name, age, audio_url, img_url in songs %}
+    <tr>
+        <td> <img src={{img_url}} alt="alternatetext" style="width:100px;height:100px">
+        </td>
+        <td> {{name}}</td>
+        <td>{{age}} </td>
+        <td>    <audio controls>
+            <source src= {{audio_url}} type="audio/mpeg">
+          </audio> </p></td>
+    </tr>
+
+    {% endfor%}
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+web: gunicorn --chdir flask_song_app __init__:app
