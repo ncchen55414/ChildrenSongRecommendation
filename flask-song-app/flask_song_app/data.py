@@ -1,4 +1,24 @@
+from joblib import load
+import os
 
+#print (os.listdir())
+
+knn = load('./flask-song-app/flask_song_app/data/knn.joblib')   
+df = load('./flask-song-app/flask_song_app/data/songs_df.joblib')
+distance, indices = knn.kneighbors()
+
+
+def make_recommendation(idx, num=5):
+    _ , indices = knn.kneighbors()
+    num = min(num, 10)
+    #return df.iloc[indices[idx]][0:num]
+    return df.loc[indices[idx],['Track_Name','Age','preview_url','image_url']][0:num].values.tolist()
+
+  
+all_songs = df[['Track_Name','Age','preview_url','image_url']].values.tolist()
+
+
+"""
 all_songs =  [('Jingle Bells',
  3,
  'https://p.scdn.co/mp3-preview/d43fc23b4e0ef1d20800ded58e4cb673711aafc2?cid=825f4373e1624b2bbace97b26b56972e',
@@ -12,7 +32,6 @@ all_songs =  [('Jingle Bells',
  'https://p.scdn.co/mp3-preview/a8b496e6c30ada5c33efb1a613967f8e02115af4?cid=825f4373e1624b2bbace97b26b56972e',
  'https://i.scdn.co/image/ab67616d0000b273ec8bd4c7fd93b7a0cd80a994')
 ]
-
 
 recommends ={0:[('Ooo, Ahh, Oww!',
   2,
@@ -74,3 +93,4 @@ recommends ={0:[('Ooo, Ahh, Oww!',
   14,
   None,
   'https://i.scdn.co/image/ab67616d0000b27354ef13c30a024a7f1ba79efd')]}
+"""
