@@ -26,20 +26,20 @@ The project consists of four parts:
   
 - Lyrics: Latent Dirichlet Allocation topic modeling.
 
-- Age-Rating: Decision Tree model to predict age-ratings for songs based on auido features and lyrics.
+- Age-Rating: Decision Tree model to predict age-ratings for songs based on audio features and lyrics.
 
 
 ## Investigation
 
 - What's the relation between age-ratings and audio features?
   
-  - Age-rateing is most correlated to `popularity` and `duration` (`popularity` measuare how many users have played the track, and `duration` is the time length of the song).
-
+  - Age-rating is most correlated to `popularity` and `duration` (`popularity` measures how many users have played the track, and `duration` is the time length of the song).
+  
   - `Melodic modes` (major vs minor): In the age group of 2-5, more than 80% of the songs are in major keys, while the age group of 13-18 have only 65% in major keys.
 
 - What's the relation between age-ratings and lyrics?
 
-  - Use a decision tree models to predict age-ratings from song lyrics, and check feature-importances.  (Tried, need to improve)
+  - Use a decision tree models to predict age-ratings from song lyrics, and check feature-importance.  (Tried, need to improve)
 
 - What are the albums sing about? What are the popular topics in albums?
 
