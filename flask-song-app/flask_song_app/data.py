@@ -3,8 +3,11 @@ import os
 
 #print (os.listdir())
 
-knn = load('./flask-song-app/flask_song_app/data/knn.joblib')   
-df = load('./flask-song-app/flask_song_app/data/songs_df.joblib')
+knn = load('./data/knn.joblib')   
+df = load('./data/songs_df.joblib')
+
+#knn = load('./flask_song_app/data/knn.joblib')   
+#df = load('./flask_song_app/data/songs_df.joblib')
 distance, indices = knn.kneighbors()
 
 

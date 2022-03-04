@@ -4,7 +4,7 @@
 
 The project consists of four parts:
 
-- `\flask-song-app\` A web application that provides recommendation for children's songs. Users can select a song, and the app will recommend similar songs.
+- `\flask-song-app\` A web application that provides recommendation for children's songs. Users can select a song, and the app will recommend similar songs.  Deployed to Heroku: [https://children-song-app.herokuapp.com/](https://children-song-app.herokuapp.com/)
 
 - `\notebooks\1_*` Data scrapping and cleaning. 
   
