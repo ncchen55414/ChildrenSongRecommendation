@@ -14,7 +14,7 @@ The project consists of four parts:
 
 ## Data Ingestion
 
-- 2206 albums with age-ratings scrapped from [Common Sense Media](https://www.commonsensemedia.org/music-reviews?sort=field_review_recommended_age&order=asc), a non-profit whose mission is to ensure digital well-being for kids by providing expert reviews. See more info on [how music is rated](https://www.commonsensemedia.org/about-us/our-mission/about-our-ratings/music).
+- 2206 albums with age-ratings scrapped from [Common Sense Media](http://web.archive.org/web/20211024135317/https://www.commonsensemedia.org/music-reviews?sort=field_review_recommended_age&order=asc), a non-profit whose mission is to ensure digital well-being for kids by providing expert reviews. See more info on [how music is rated](http://web.archive.org/web/20220114100252/https://www.commonsensemedia.org/about-us/our-mission/about-our-ratings/music).
 
 - Use Spotify API to obtain song tracks in each album. In total, 18K songs along with audio features and ISRC codes are founded.
   
