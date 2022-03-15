@@ -10,7 +10,7 @@ The project consists of four parts:
   
 - `\notebooks\2_*` Investigation of the relation between age-ratings and song features.
 
-- `\notebooks\3_*` Age-Rating Models
+- `\notebooks\3_*` Age-Rating Models, LDA topic model
 
 - `\notebooks\4_*` Song Recommender
 
@@ -26,18 +26,20 @@ The project consists of four parts:
 
 - **Two Age-Rating Models**:
 
+  - **Use audio features to predict age ratings.**
+  
+    A tree regression model uses 13 audio features (key, tempo, duration, etc, explained [here](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features)) and popularity to predict age-ratings. The model achieves an  R^2  score of 0.50, with `popluarity` and `duration` being the two most important features.
+
   - **Use song lyrics to predict age ratings.**
   
     After basic text preprocessing (tokenization, lemmiztization, removing stop words), the processed lyrics are then feed into a model pipeline consisting of `TfIdfVectorizer` and `RidgeRegressor`. `GridSearchCV` is used on a smaller subset to select the paramters: `min_df` for `TfIdfVectorizer`, and `alpha` for `RidgeRegressor`. These parameteres will be used later for song recommendation with KNN model.
 
     The model achieves an R^2 score of 0.4.  
 
-  - **Use audio features to predict age ratings.**
-  
-    A tree regression model uses 13 audio features (key, acoustiness, tempo, duration, etc) and popularity to predict age-ratings. The model achieves an  R^2  score of 0.50, with `popluarity` and `duration` being the two most important features.
+
 
 - **Song Recommendation** K-Nearest Neighborhood model using the follow features:
-  - Audio features: key, mode, time_signature, duration_ms, danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness valence, tempo. Explained in [Spotify API Doc](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features).  
+  - Audio features: key, mode, time_signature, duration_ms, danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness valence, tempo. Explained [here](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features).  
   - Song popularity: A Number between 0-100 computed based on the total number of plays the track has had and how recent those plays are. Provied by [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track).
   - Age rating of the album that includes the song track.
   - Song lyrics.
