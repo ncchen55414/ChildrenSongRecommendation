@@ -20,7 +20,7 @@ The project consists of four parts:
 
 - Use Spotify API to obtain song tracks in each album. In total, 18K songs along with audio features and ISRC codes are founded.
   
-- Use MusixMatch API and ISRC codes to obtain lyrics for 12K songs.
+- Use [MusixMatch API with ISRC codes](https://developer.musixmatch.com/documentation/api-reference/track-get) to obtain lyrics for 12K songs.
 
 ## Models
 
@@ -28,20 +28,20 @@ The project consists of four parts:
 
   - **Use audio features to predict age ratings.**
   
-    A tree regression model uses 13 audio features (key, tempo, duration, etc, explained [here](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features)) and popularity to predict age-ratings. The model achieves an  R^2  score of 0.50, with `popluarity` and `duration` being the two most important features.
+    A tree regression model uses 13 audio features (key, tempo, duration, etc, explained [here](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features)) and popularity to predict age-ratings. The model achieves an  R^2^  score of 0.50, with `popluarity` and `duration` being the two most important features.
 
   - **Use song lyrics to predict age ratings.**
   
-    After basic text preprocessing (tokenization, lemmiztization, removing stop words), the processed lyrics are then feed into a model pipeline consisting of `TfIdfVectorizer` and `RidgeRegressor`. `GridSearchCV` is used on a smaller subset to select the paramters: `min_df` for `TfIdfVectorizer`, and `alpha` for `RidgeRegressor`. These parameteres will be used later for song recommendation with KNN model.
+    After basic text preprocessing (tokenization, lemmiztization, removing stop words), the processed lyrics are then feed into a model pipeline consisting of `TfIdfVectorizer` and `RidgeRegressor`. `GridSearchCV` is used on a smaller subset to select the paramters: `min_df`, `max_df` for `TfIdfVectorizer`, and `alpha` for `RidgeRegressor`. The parameters for  `TfIdfVectorizer` will be used later for lyrics-based song recommendation with KNN model (where there is no metric to tune parameters.)
 
-    The model achieves an R^2 score of 0.4.  
+    The model achieves an R^2^ score of 0.4.  
 
 
 
 - **Song Recommendation** K-Nearest Neighborhood model using the follow features:
   - Audio features: key, mode, time_signature, duration_ms, danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness valence, tempo. Explained [here](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features).  
   - Song popularity: A Number between 0-100 computed based on the total number of plays the track has had and how recent those plays are. Provied by [Spotify API](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track).
-  - Age rating of the album that includes the song track.
+  - Age rating of the album including the song track.
   - Song lyrics.
   
 
@@ -54,7 +54,9 @@ The project consists of four parts:
   - `Melodic modes` (major vs minor): In the age group of 2-5, more than 80% of the songs are in major keys, while the age group of 13-18 have only 65% in major keys.
 
 - What's the relation between age-ratings and lyrics?
+  
+  - Visualized by plotting word-polarity: Divide the lyrics into two age-groups: young vs old, and use the conditional word probabilities as the (x,y)-coordinate. In the plot, neutral words will approximately lie on the line x=y, and explict words should be close to the y-axis.  
 
-- What are the albums sing about? What are the popular topics in albums?
+- What are the albums sing about? 
 
-  - Use LDA Topic Modeling to find popular topic in each age-group.     (Tried, need to improve).
+  - LDA topic modeling is used to define 10 topics among all lyrics. Each topic is described by its topic keywords.
