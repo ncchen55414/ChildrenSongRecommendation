@@ -8,10 +8,9 @@ The project consists of four parts:
 
 - `\notebooks\1_*` Data scrapping and cleaning. 
   
-- `\notebooks\2_*` Investigation of the relation between age-ratings and song features.
+- `\notebooks\2_*` Investigation of the relation between age-ratings and audio features. NLP to understand the lyrics.
 
-- `\notebooks\3_*` Age-Rating Models, LDA topic model
-
+- `\notebooks\3_*` Age-Rating Models, using audio features and lyrics
 - `\notebooks\4_*` Song Recommender
 
 ## Data Ingestion
@@ -49,14 +48,14 @@ The project consists of four parts:
 
 - What's the relation between age-ratings and audio features?
   
-  - Age-rating is most correlated to `popularity` and `duration` (`popularity` measures how many users have played the track, and `duration` is the time length of the song).
+  - Age-rating is most correlated to `popularity` and `duration` (`popularity` measures how many users have played the track, and `duration` is the time length of the song). (See `2.2_Variables_Relation.ipynb`)
   
-  - `Melodic modes` (major vs minor): In the age group of 2-5, more than 80% of the songs are in major keys, while the age group of 13-18 have only 65% in major keys.
+  - `Melodic modes` (major vs minor): In the age group of 2-5, more than 80% of the songs are in major keys, while the age group of 13-18 have only 65% in major keys. (See `2.2_Variables_Relation.ipynb`)
 
 - What's the relation between age-ratings and lyrics?
   
-  - Visualized by plotting word-polarity: Divide the lyrics into two age-groups: young vs old, and use the conditional word probabilities as the (x,y)-coordinate. In the plot, neutral words will approximately lie on the line x=y, and explict words should be close to the y-axis.  
+  - Visualized by plotting word-polarity: Divide the lyrics into two age-groups: young vs old, and use the conditional word probabilities as the (x,y)-coordinate. In the plot, neutral words will approximately lie on the line x=y, and explict words should be close to the y-axis. (See `2.5_NLP_Visualize_Lyrics_Word_Polarity.ipynb`)
 
 - What are the albums sing about? 
 
-  - LDA topic modeling is used to define 10 topics among all lyrics. Each topic is described by its topic keywords.
+  - LDA topic modeling is used to define 10 topics among all lyrics. Each topic is described by its topic keywords. (See `2.4_NLP_Topic_Modeling_Using_Song_Lyrics.ipynb`)
